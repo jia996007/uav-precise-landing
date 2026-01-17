@@ -34,6 +34,6 @@ The default camera is installed in the geometric center of the plane of the airc
 
 
 
-2024.11.21
+2025.11.21
 
 Added mode switching, follow mode and landing mode
