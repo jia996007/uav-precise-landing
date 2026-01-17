@@ -1,39 +1,39 @@
-# 无人机Apriltag码定位降落
+# Drone Apriltag code positioning and landing
 
-## 工具
+## Tool
 
-机载电脑 ubuntu18.04/20.04 
+Onboard computer ubuntu18.04/20.04 
 
-px4固件飞控
+px4 firmware flight control
 
-飞行平台
+Flight platform
 
-机载电脑需配置ROS+mavros+apriltag_ros
+The on-board computer needs to be configured with ROS+mavros+apriltag_ros
 
-mavros安装参考:
+mavros installation reference:
 
-配置流程分为源码安装和二进制（apt）安装
+The configuration process is divided into source code installation and binary (apt) installation
 
-主要安装相机驱动和apriiltag推荐二进制安装，简单省时！
+Mainly install the camera driver and apriiltag recommended binary installation, simple and time-saving!
 
 
 
-# 控制代码讲解
+# Explanation of control code
 
 config:
-//设置遥控器升降舵和方向舵杆量和若干参数
-设置搜索模式点位x_move,y_move，即apriltag码附近点位,根据二维码实际大小和飞行高度进行速度PID修改
+//Set the amount and several parameters of the remote control elevator and rudder lever
+Set the search mode points x_move, y_move, that is, the points near the apriltag code, and modify the speed PID according to the actual size of the QR code and the flight altitude
 
 
-//流程：起飞上升到飞行高度然后进入搜索模式，靠升降舵和方向舵进行移动控制，如果识别的apriltag码则进入自动定位降落，手动无效。
+//Process: Take off and rise to the flight altitude and then enter the search mode, relying on the elevator and rudder for movement control, if the identified apriltag code enters the automatic positioning and landing, the manual is invalid.
 
-流程：飞机先飞到搜索点位，然后进行二维码跟踪，如果长时间没有识别到apriltag码，则进入降落模式。
+Process: The aircraft first flies to the search point, and then performs QR code tracking. If the apriltag code is not recognized for a long time, it enters the landing mode.
 
 
-默认摄像头安装在飞机平面几何中心，相机坐标系y负方向指向机头
+The default camera is installed in the geometric center of the plane of the aircraft, and the camera coordinate system points to the nose in the negative direction of y
 
 
 
 2024.11.21
 
-增加模式切换，跟随模式和降落模式
+Added mode switching, follow mode and landing mode
